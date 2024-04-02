@@ -2,6 +2,7 @@ const persona = document.querySelector('.persona');
 const lapide = document.querySelector('.lapide');
 const bird = document.querySelector('.bird');
 const gameover = document.querySelector('.hidden');
+const counterElement = document.getElementById("counter");
 // const restartButton = document.querySelector('restartButton');
 
 const jump = () => {
@@ -17,7 +18,7 @@ const jump = () => {
 let count = 0; // Inicializando o contador
 
 function updateCounter() {
-    const counterElement = document.getElementById("counter");
+
     counterElement.textContent = count;
 }
 
@@ -57,12 +58,12 @@ const loop = setInterval(() => {
     }
 }, 10);
 
-function restartGame() {
-    // Aqui você reinicia o jogo, por exemplo, resetando o contador e escondendo a imagem de "game over" e o botão de reinício
-    count = 0;
-    updateCounter();
-    gameover.classList.add('hidden');
-    restartButton.classList.add('hidden');
-}
+// function restartGame() {
+//     // Aqui você reinicia o jogo, por exemplo, resetando o contador e escondendo a imagem de "game over" e o botão de reinício
+//     count = 0;
+//     updateCounter();
+//     gameover.classList.add('hidden');
+//     restartButton.classList.add('hidden');
+// }
 
 document.addEventListener('keydown', jump);
