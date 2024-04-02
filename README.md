@@ -15,3 +15,4 @@ Breve descrição do seu projeto, incluindo seu propósito e principais funciona
 
 É um jogo simples onde o usuário pode usar qualquer tecla para fazer o personagem principal salta as lapides, cuidado deixar de salta-las pode custar a vida e o seu recorde ...
 
+![O_jogo](./img/jogo.png)
