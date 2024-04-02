@@ -1,0 +1,86 @@
+*{
+    margin: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+.grade{
+    background-image: url(../img/background.gif);
+    background-size: contain;
+    position: relative;
+    border: solid 1px #333;
+    width: 60%;
+    height: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+.lapide, .bird{
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    /* left: 60px; */
+    animation: lapide-animation 1.5s linear infinite;
+}
+
+.bird{
+    position: absolute;
+    bottom: 370px;
+    animation: lapide-animation 4s linear infinite;
+}
+
+.persona{
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+}
+
+.jump{
+    animation: jump 500ms ease-out;
+}
+
+#counter {
+    color: #fb3434;
+    top: 0px;
+    right: 10px;
+    position: absolute;
+    text-align: center;
+    font-size: 30px;
+}
+
+.hidden {
+    position: absolute;
+    display: none;
+}
+
+
+@keyframes lapide-animation {
+    from{
+        right: -80px;
+    }
+    to{
+        right: 100%;
+    }
+}
+
+@keyframes jump {
+    0%{
+        bottom: 0;
+    }
+    
+    40%{
+        bottom: 200px;
+    }
+
+    50%{
+        bottom: 200px;
+    }
+
+    0%{
+        bottom: 200px;
+    }
+
+    0%{
+        bottom: 0;
+    }
+}
