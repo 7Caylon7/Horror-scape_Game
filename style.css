@@ -9,7 +9,7 @@ body{
 }
 
 .grade{
-    background-image: url(../img/background.gif);
+    background-image: url(./img/background.gif);
     background-size: contain;
     position: relative;
     border: solid 1px #333;

@@ -53,7 +53,7 @@ const loop = setInterval(() => {
     persona.style.animation = "none";
     persona.style.bottom = `${personaPosition}px`;
 
-    persona.src = "../img/personagem-death.gif";
+    persona.src = "./img/personagem-death.gif";
     persona.style.width = "60px";
     gameover.classList.remove("hidden");
 
