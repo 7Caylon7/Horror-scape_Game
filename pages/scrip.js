@@ -1,69 +1,77 @@
-const persona = document.querySelector('.persona');
-const lapide = document.querySelector('.lapide');
-const bird = document.querySelector('.bird');
-const gameover = document.querySelector('.hidden');
+const persona = document.querySelector(".persona");
+const lapide = document.querySelector(".lapide");
+const bird = document.querySelector(".bird");
+const gameover = document.querySelector(".hidden");
 const counterElement = document.getElementById("counter");
-// const restartButton = document.querySelector('restartButton');
+const backgroundMusic = document.getElementById("backgroundMusic");
+const crashMusic = document.getElementById("crashMusic");
+const runningMusic = document.getElementById("runningMusic");
+const jumpMusic = document.getElementById("jumpMusic");
+const gameoverMusic = document.getElementById("gameoverMusic");
+
+backgroundMusic.volume = 1;
+backgroundMusic.play();
 
 const jump = () => {
-    persona.classList.add('jump');
+  persona.classList.add("jump");
 
-    setTimeout(() => {
-        persona.classList.remove('jump'); 
-    }, 500);  
-}
-
-
+  setTimeout(() => {
+    persona.classList.remove("jump");
+  }, 500);
+};
 
 let count = 0; // Inicializando o contador
 
 function updateCounter() {
-
-    counterElement.textContent = count;
+  counterElement.textContent = count;
 }
 
 function incrementCounter() {
-    count++;
-    updateCounter();
+  count++;
+  updateCounter();
 }
 
 // Atualizando o contador inicialmente
 updateCounter();
 
-
 const loop = setInterval(() => {
-    const lapidePosition = lapide.offsetLeft;
-    const birdPosition = bird.offsetLeft;
-    const personaPosition = +window.getComputedStyle(persona).bottom.replace('px','');
-    
-    if(lapidePosition <= 60 && lapidePosition > 0 && personaPosition < 91){
+  const lapidePosition = lapide.offsetLeft;
+  const birdPosition = bird.offsetLeft;
+  const personaPosition = +window
+    .getComputedStyle(persona)
+    .bottom.replace("px", "");
 
-        lapide.style.animation = 'none';
-        lapide.style.left = `${lapidePosition}px`;
+  if (lapidePosition <= 60 && lapidePosition > 0 && personaPosition < 91) {
+    // crashMusic.play();
 
-        bird.style.animation = 'none';
-        bird.style.left = `${birdPosition}px`;
+    lapide.style.animation = "none";
+    lapide.style.left = `${lapidePosition}px`;
 
-        persona.style.animation = 'none';
-        persona.style.bottom = `${personaPosition}px`;
+    bird.style.animation = "none";
+    bird.style.left = `${birdPosition}px`;
 
-        persona.src = '../img/personagem-death.gif';
-        persona.style.width ="60px";
-        gameover.classList.remove('hidden');
+    persona.style.animation = "none";
+    persona.style.bottom = `${personaPosition}px`;
 
-        // restartButton.addEventListener('click', restartGame);
+    persona.src = "../img/personagem-death.gif";
+    persona.style.width = "60px";
+    gameover.classList.remove("hidden");
 
-    }else{
-        incrementCounter()
-    }
+    backgroundMusic.pause();
+    runningMusic.pause();
+    gameoverMusic.play();
+  } else {
+    runningMusic.volume = 0.1;
+    runningMusic.play();
+    incrementCounter();
+  }
+
+  if (personaPosition > 90) {
+    backgroundMusic.play();
+    runningMusic.pause();
+    jumpMusic.volume = 0.1;
+    jumpMusic.play();
+  }
 }, 10);
 
-// function restartGame() {
-//     // Aqui você reinicia o jogo, por exemplo, resetando o contador e escondendo a imagem de "game over" e o botão de reinício
-//     count = 0;
-//     updateCounter();
-//     gameover.classList.add('hidden');
-//     restartButton.classList.add('hidden');
-// }
-
-document.addEventListener('keydown', jump);
+document.addEventListener("keydown", jump);

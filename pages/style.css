@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+body{
+    background: rgb(60, 60, 60);
+}
+
 .grade{
     background-image: url(../img/background.gif);
     background-size: contain;
