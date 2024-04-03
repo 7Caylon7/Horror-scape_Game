@@ -62,7 +62,7 @@ const loop = setInterval(() => {
     gameoverMusic.play();
   } else {
     runningMusic.volume = 0.1;
-    runningMusic.play();
+    runningMusic.play(); 
     incrementCounter();
   }
 
