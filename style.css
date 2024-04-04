@@ -63,10 +63,27 @@ body{
     font-size: 30px;
 }
 
-.hidden{
+.hidden, .restart{
     display: none;
 }
 
+.gameover-grade{
+    margin-top: 10px;
+    display: grid;
+    justify-content: center;
+    text-align: center;
+}
+
+.gameover-grade button{
+    margin-top: 10px;
+    font-size: 25px;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.gameover-grade button:hover{
+    background: linear-gradient(45deg, rgba(5,2,2,1) 0%, rgba(253,29,29,1) 50%, rgba(0,0,0,1) 100%);
+}
 
 .footer{
     display: flex;
