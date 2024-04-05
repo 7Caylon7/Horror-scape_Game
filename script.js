@@ -10,37 +10,51 @@ const elements = {
 const musics = {
     background: {
         element: document.getElementById("backgroundMusic"),
-        volume: 1,
     },
     crash: {
         element: document.getElementById("crashMusic"),
-        volume: 1,
     },
     running: {
         element: document.getElementById("runningMusic"),
-        volume: 0.1,
     },
     jump: {
         element: document.getElementById("jumpMusic"),
-        volume: 0.1,
     },
     gameover: {
         element: document.getElementById("gameoverMusic"),
-        volume: 1,
     },
 };
 
 
-// // Funções para controle de músicas
-// function playMusic(music) {
-//     music.element.currentTime = 0;
-//     music.element.volume = music.volume;
-//     music.element.play();
-// }
-  
-// function pauseMusic(music) {
-//     music.element.pause();
-// }
+function playBackgroundMusic(){
+    musics.background.element.play();
+}
+
+function pauseBackgroundMusic(){
+    musics.background.element.pause();
+}
+
+function playRunningMusic(){
+    musics.running.element.play();
+    musics.running.element.volume = 0.1;
+}
+
+function pauseRunningMusic(){
+    musics.running.element.pause();
+}
+
+function playJumpMusic(){
+    musics.jump.element.play();
+    musics.jump.element.volume = 0.1;
+}
+
+function playCrashMusic(){
+    musics.crash.element.play();
+}
+
+function playGameoverMusic(){
+    musics.gameover.element.play();
+}
 
 function updateCounter(count) {
     elements.counterElement.textContent = count;
@@ -57,8 +71,6 @@ function jump() {
 
 
 function startGame() {
-    // backgroundMusic.play();
-    
 
     let count = 0;
 
@@ -68,11 +80,16 @@ function startGame() {
         const lapidePosition = elements.lapide.offsetLeft;
         const birdPosition = elements.bird.offsetLeft;
         const personaPosition = +window.getComputedStyle(elements.persona).bottom.replace("px", "");
-
-        // runningMusic.volume = 0.1;
-        // runningMusic.play();  
+        
+        playBackgroundMusic();
+        playRunningMusic();
 
         if (lapidePosition <= 60 && lapidePosition > 0 && personaPosition < 91){
+
+            pauseBackgroundMusic();
+            pauseRunningMusic();
+            // playCrashMusic();
+            playGameoverMusic();
 
             elements.lapide.style.animation = "none";
             elements.lapide.style.left = `${lapidePosition}px`;
@@ -88,18 +105,12 @@ function startGame() {
             elements.gameover.classList.remove("hidden");
             elements.restartButton.classList.remove("restart");
 
-            // runningMusic.pause();
-            // backgroundMusic.pause();
-            // gameoverMusic.play();
-
         }else{
             incrementCounter();
         }
 
         if(personaPosition > 90){
-            // runningMusic.pause();
-            // jumpMusic.volume = 0.1;
-            // jumpMusic.play();
+            playJumpMusic();
         }
 
     }, 10);
