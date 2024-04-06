@@ -4,7 +4,7 @@ const elements = {
     bird: document.querySelector(".bird"),
     gameover: document.querySelector(".hidden"),
     counterElement: document.getElementById("counter"),
-    // restartButton: document.getElementById("restart"),
+    restartButton: document.getElementById("restart"),
 };
 
 const musics = {
@@ -56,6 +56,10 @@ function playGameoverMusic(){
     musics.gameover.element.play();
 }
 
+function pauseGameoverMusic(){
+    musics.gameover.element.pause();
+}
+
 function updateCounter(count) {
     elements.counterElement.textContent = count;
 }
@@ -68,7 +72,6 @@ function jump() {
       elements.persona.classList.remove("jump");
     }, 500);
   }
-
 
 function startGame() {
 
@@ -124,3 +127,13 @@ function startGame() {
 }
 
 startGame();
+
+// elements.restartButton.addEventListener("click", () => {
+//     elements.gameover.classList.add("hidden");
+//     elements.restartButton.classList.add("restart");
+//     pauseGameoverMusic();
+
+//     elements.lapide.style.animation = "lapide-animation 1.5s linear infinite";
+
+//     elements.persona.src = "./img/personagem.gif";
+// });
